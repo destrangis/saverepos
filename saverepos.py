@@ -21,7 +21,8 @@ def get_repos(url):
     rsp = requests.get(repos_page)
     rsp.raise_for_status()
 
-    soup = BeautifulSoup(rsp.text, "html5lib")
+    #soup = BeautifulSoup(rsp.text, "html5lib")
+    soup = BeautifulSoup(rsp.text, "html.parser")
     repo_links = soup.find_all("a", class_="name")
     return [ url + lnk.attrs["href"] for lnk in repo_links ]
 
