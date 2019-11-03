@@ -73,8 +73,13 @@ def cli_options(argv):
         default=basedir,
         help="Base directory where the repositories will be held.",
     )
-    p.add_argument("--loglevel", "-l", metavar="LEVEL", default="ERROR",
-        help="Logging level (DEBUG, INFO, WARNING, ERROR)")
+    p.add_argument(
+        "--loglevel",
+        "-l",
+        metavar="LEVEL",
+        default="ERROR",
+        help="Logging level (DEBUG, INFO, WARNING, ERROR)",
+    )
     p.add_argument("url", help="URL of the Gitea server.")
     return p.parse_args(argv)
 
@@ -84,10 +89,13 @@ def setup_logging(opts):
     level = logging.getLevelName(opts.loglevel)
     log.setLevel(level)
     hdl = logging.StreamHandler()
-    fmt = logging.Formatter('%(asctime)s:%(name)s:%(levelname)s - %(message)s', datefmt="%Y/%m/%d %H:%M:%S")
+    fmt = logging.Formatter(
+        "%(asctime)s:%(name)s:%(levelname)s - %(message)s", datefmt="%Y/%m/%d %H:%M:%S"
+    )
     hdl.setFormatter(fmt)
     log.addHandler(hdl)
     return log
+
 
 def main(args=None):
     if args is None:
