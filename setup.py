@@ -10,8 +10,8 @@ setup(
     author="Javier Llopis",
     author_email="javier@llopis.me",
     url="https://github.com/destrangis/saverepos",
-    description=saverepos.__doc__,
-    install_requires=["requests>=2.18.4", "beautifulsoup4>=4.8.1"],
+    description=saverepos.__doc__.strip(),
+    license="MIT",
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3 :: Only",
