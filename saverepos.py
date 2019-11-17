@@ -98,7 +98,16 @@ def cli_options(argv):
         default="ERROR",
         help="Logging level (DEBUG, INFO, WARNING, ERROR)",
     )
-    p.add_argument("url", help="URL of the Gitea server.")
+    g = p.add_mutually_exclusive_group()
+    g.add_argument(
+        "--version",
+        "-v",
+        #default=False,
+        #nargs='?',
+        action="store_true",
+        help="show program version and exit",
+    )
+    g.add_argument("url", nargs='?', help="URL of the Gitea server.")
     return p.parse_args(argv)
 
 
@@ -120,6 +129,10 @@ def main(args=None):
         args = sys.argv[1:]
 
     opts = cli_options(args)
+    if opts.version:
+        print(VERSION)
+        return 0
+
     log = setup_logging(opts)
 
     if not os.path.isdir(opts.basedir):
