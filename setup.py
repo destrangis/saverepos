@@ -2,6 +2,9 @@ from setuptools import setup
 
 import saverepos
 
+with open("README.rst") as fd:
+    readme = fd.read()
+
 setup(
     name="saverepos",
     version=saverepos.VERSION,
@@ -11,7 +14,10 @@ setup(
     author_email="javier@llopis.me",
     url="https://github.com/destrangis/saverepos",
     description=saverepos.__doc__.strip(),
+    long_description=readme,
+    long_description_content_type="text/x-rst",
     license="MIT",
+    platforms=["all"],
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3 :: Only",
