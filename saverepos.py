@@ -14,7 +14,7 @@ import json
 import urllib.request
 
 
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 basedir = "repos"
 
 
@@ -134,6 +134,10 @@ def main(args=None):
         return 0
 
     log = setup_logging(opts)
+
+    if opts.url is None:
+        log.critical("Repo URL not specified on command line.")
+        return 1
 
     if not os.path.isdir(opts.basedir):
         os.makedirs(opts.basedir)
